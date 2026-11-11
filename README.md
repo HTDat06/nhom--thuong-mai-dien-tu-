@@ -1,157 +1,509 @@
 seed.ts
 
-import "dotenv/config";
-import bcrypt from "bcryptjs";
-import { PrismaMssql } from "@prisma/adapter-mssql";
-import { PrismaClient } from "../generated/prisma/client";
 
-const adapter = new PrismaMssql({
-  server: process.env.DB_HOST!,
-  port: Number(process.env.DB_PORT),
-  database: process.env.DB_NAME!,
-  user: process.env.DB_USER!,
-  password: process.env.DB_PASSWORD!,
-  options: { encrypt: true, trustServerCertificate: true },
-});
-const prisma = new PrismaClient({ adapter });
+"use strict";
+
+const bcrypt = require("bcryptjs");
+
+// =============================================
+// DỮ LIỆU MẪU
+// =============================================
 
 const categories = [
-  { name: "Văn học", desc: "Tiểu thuyết, truyện ngắn, thơ trong và ngoài nước" },
-  { name: "Kinh tế - Kỹ năng sống", desc: "Sách quản trị, tài chính cá nhân, phát triển bản thân" },
-  { name: "Thiếu nhi", desc: "Truyện tranh, truyện cổ tích, sách kiến thức cho bé" },
-  { name: "Khoa học - Công nghệ", desc: "Khoa học tự nhiên, lập trình, trí tuệ nhân tạo" },
-  { name: "Lịch sử - Xã hội", desc: "Lịch sử Việt Nam, thế giới và nhân văn" },
-];
-
-// [chỉ số danh mục, tên sách, tác giả, giá]
-const books: [number, string, string, number][] = [
-  [0, "Dế Mèn phiêu lưu ký", "Tô Hoài", 68000],
-  [0, "Tắt đèn", "Ngô Tất Tố", 52000],
-  [0, "Số đỏ", "Vũ Trọng Phụng", 75000],
-  [0, "Truyện Kiều", "Nguyễn Du", 89000],
-  [0, "Mắt biếc", "Nguyễn Nhật Ánh", 110000],
-  [0, "Cho tôi xin một vé đi tuổi thơ", "Nguyễn Nhật Ánh", 95000],
-  [1, "Đắc nhân tâm", "Dale Carnegie", 86000],
-  [1, "Cha giàu, cha nghèo", "Robert T. Kiyosaki", 99000],
-  [1, "Tư duy nhanh và chậm", "Daniel Kahneman", 189000],
-  [1, "Thói quen nguyên tử", "James Clear", 139000],
-  [1, "Nghĩ giàu và làm giàu", "Napoleon Hill", 115000],
-  [1, "Quốc gia khởi nghiệp", "Dan Senor, Saul Singer", 165000],
-  [2, "Hoàng tử bé", "Antoine de Saint-Exupéry", 59000],
-  [2, "Kính vạn hoa - Tập 1", "Nguyễn Nhật Ánh", 72000],
-  [2, "Truyện cổ Grimm", "Anh em nhà Grimm", 98000],
-  [2, "Truyện cổ Andersen", "H. C. Andersen", 92000],
-  [2, "Tuyển tập truyện cổ tích Việt Nam", "Nhiều tác giả", 79000],
-  [2, "Bách khoa toàn thư cho bé: Động vật", "Nhiều tác giả", 125000],
-  [3, "Lược sử thời gian", "Stephen Hawking", 108000],
-  [3, "Vũ trụ trong vỏ hạt dẻ", "Stephen Hawking", 118000],
-  [3, "Clean Code: Mã sạch", "Robert C. Martin", 210000],
-  [3, "Nhập môn Trí tuệ nhân tạo", "Nhiều tác giả", 175000],
-  [3, "Cơ sở dữ liệu quan hệ và SQL", "Nhiều tác giả", 145000],
-  [3, "Lập trình Python cho người mới bắt đầu", "Nhiều tác giả", 135000],
-  [4, "Sapiens: Lược sử loài người", "Yuval Noah Harari", 199000],
-  [4, "Việt Nam sử lược", "Trần Trọng Kim", 155000],
-  [4, "Đại Việt sử ký toàn thư", "Ngô Sĩ Liên", 250000],
-  [4, "Súng, vi trùng và thép", "Jared Diamond", 185000],
-  [4, "Nhật ký trong tù", "Hồ Chí Minh", 49000],
-  [4, "Homo Deus: Lược sử tương lai", "Yuval Noah Harari", 189000],
-];
-
-const customerNames = [
-  "Nguyễn Văn An", "Trần Thị Bình", "Lê Hoàng Cường", "Phạm Thu Dung", "Võ Minh Đức",
-  "Đặng Ngọc Hà", "Bùi Quốc Huy", "Hồ Thị Lan", "Ngô Thanh Nam", "Dương Mỹ Linh",
-];
-
-const addresses = [
-  "12 Nguyễn Huệ, Q.1, TP.HCM", "45 Lê Lợi, Q.1, TP.HCM", "78 Trần Hưng Đạo, Q.5, TP.HCM",
-  "23 Hai Bà Trưng, Hoàn Kiếm, Hà Nội", "9 Nguyễn Trãi, Thanh Xuân, Hà Nội",
-  "101 Bạch Đằng, Hải Châu, Đà Nẵng", "56 Lý Thường Kiệt, Q.10, TP.HCM",
-  "34 Phan Chu Trinh, Ninh Kiều, Cần Thơ", "88 Điện Biên Phủ, Bình Thạnh, TP.HCM",
-  "17 Trần Phú, Nha Trang, Khánh Hòa",
-];
-
-const statuses = [
-  "pending", "pending", "pending", "confirmed", "confirmed",
-  "shipping", "shipping", "completed", "completed", "cancelled",
-];
-
-async function main() {
-  // Xóa theo thứ tự con -> cha để chạy lại được nhiều lần
-  await prisma.orderItem.deleteMany();
-  await prisma.order.deleteMany();
-  await prisma.cartItem.deleteMany();
-  await prisma.product.deleteMany();
-  await prisma.category.deleteMany();
-  await prisma.user.deleteMany();
-
-  // 1 admin + 10 khách hàng
-  await prisma.user.create({
-    data: {
-      name: "Quản trị viên", email: "admin@bookstore.vn", phone: "0900000000",
-      password: await bcrypt.hash("Admin@123", 10),
-    },
-  });
-  const customerHash = await bcrypt.hash("123456", 10);
-  const customers = [];
-  for (const [i, name] of customerNames.entries()) {
-    customers.push(await prisma.user.create({
-      data: {
-        name,
-        email: `khach${String(i + 1).padStart(2, "0")}@example.com`,
-        password: customerHash,
-        phone: `0901234${String(i).padStart(3, "0")}`,
-      },
-    }));
+  {
+    category_name: "Van hoc",
+    description: "Sach van hoc"
+  },
+  {
+    category_name: "Kinh te",
+    description: "Sach kinh te"
+  },
+  {
+    category_name: "Ky nang song",
+    description: "Sach ky nang song"
+  },
+  {
+    category_name: "Cong nghe",
+    description: "Sach cong nghe"
+  },
+  {
+    category_name: "Thieu nhi",
+    description: "Sach thieu nhi"
   }
+];
 
-  // 5 danh mục
-  const cats = [];
-  for (const c of categories) {
-    cats.push(await prisma.category.create({
-      data: { categoryName: c.name, description: c.desc },
-    }));
-  }
+const books = [
+  // Van hoc: 6 sach
+  ["Dac Nhan Tam", "Van hoc", 85000],
+  ["Nha Gia Kim", "Van hoc", 79000],
+  ["Toi Thay Hoa Vang Tren Co Xanh", "Van hoc", 95000],
+  ["Mat Biec", "Van hoc", 110000],
+  ["Cho Toi Xin Mot Ve Di Tuoi Tho", "Van hoc", 90000],
+  ["Tuoi Tre Dang Gia Bao Nhieu", "Van hoc", 85000],
 
-  // 30 sách
-  const products = [];
-  for (const [i, [ci, title, author, price]] of books.entries()) {
-    products.push(await prisma.product.create({
-      data: {
-        categoryId: cats[ci].categoryId,
-        productName: title,
-        description: `Tác giả: ${author}.`,
-        price,
-        stock: 20 + ((i * 7) % 60),
-        image: `/images/books/book-${String(i + 1).padStart(2, "0")}.jpg`,
-      },
-    }));
-  }
+  // Kinh te: 6 sach
+  ["Cha Giau Cha Ngheo", "Kinh te", 120000],
+  ["Nha Dau Tu Thong Minh", "Kinh te", 150000],
+  ["Think And Grow Rich", "Kinh te", 100000],
+  ["Bi Mat Tu Duy Trieu Phu", "Kinh te", 95000],
+  ["Quoc Gia Khoi Nghiep", "Kinh te", 130000],
+  ["Kinh Te Hoc Vi Mo", "Kinh te", 140000],
 
-  // 10 đơn hàng, nhiều trạng thái; subtotal = quality x price, total = tổng subtotal
-  for (let i = 0; i < 10; i++) {
-    const lines = Array.from({ length: 1 + (i % 3) }, (_, k) => {
-      const p = products[(i * 3 + k * 7) % 30];
-      const quality = 1 + ((i + k) % 3);
-      const price = Number(p.price);
-      return { productId: p.productId, quality, price, subtotal: quality * price };
-    });
-    await prisma.order.create({
-      data: {
-        userId: customers[i].userId,
-        totalAmount: lines.reduce((s, l) => s + l.subtotal, 0),
-        shippingAddress: addresses[i],
-        phone: customers[i].phone,
-        status: statuses[i],
-        items: { create: lines },
-      },
-    });
-  }
+  // Ky nang song: 6 sach
+  ["Doi Ngan Dung Ngu Dai", "Ky nang song", 75000],
+  ["Song Don Gian Cho Minh Thanh Thang", "Ky nang song", 85000],
+  ["7 Thoi Quen Hieu Qua", "Ky nang song", 125000],
+  ["Dam Bi Ghet", "Ky nang song", 99000],
+  ["Khong Gia Dinh", "Ky nang song", 115000],
+  ["Suc Manh Cua Thoi Quen", "Ky nang song", 135000],
 
-  console.log("Seed xong: 11 users, 5 categories, 30 products, 10 orders");
+  // Cong nghe: 6 sach
+  ["Lap Trinh JavaScript Co Ban", "Cong nghe", 160000],
+  ["Lap Trinh Python", "Cong nghe", 170000],
+  ["Clean Code", "Cong nghe", 220000],
+  ["Giai Thuat Va Lap Trinh", "Cong nghe", 180000],
+  ["Co So Du Lieu", "Cong nghe", 150000],
+  ["Lap Trinh Web", "Cong nghe", 175000],
+
+  // Thieu nhi: 6 sach
+  ["De Men Phieu Luu Ky", "Thieu nhi", 65000],
+  ["Harry Potter", "Thieu nhi", 180000],
+  ["Hoang Tu Be", "Thieu nhi", 70000],
+  ["Alice O Xu So Than Tien", "Thieu nhi", 85000],
+  ["Truyen Co Tich Viet Nam", "Thieu nhi", 60000],
+  ["Nhung Tam Long Cao Ca", "Thieu nhi", 95000]
+];
+
+const orderStatuses = [
+  "pending",
+  "confirmed",
+  "shipping",
+  "completed",
+  "cancelled",
+  "pending",
+  "confirmed",
+  "shipping",
+  "completed",
+  "completed"
+];
+
+const categoryNames = categories.map(item => item.category_name);
+
+const customerEmails = Array.from(
+  { length: 10 },
+  (_, i) => `customer${i + 1}@gmail.com`
+);
+
+const adminEmail = "admin@gmail.com";
+
+const orderPhones = Array.from(
+  { length: 10 },
+  (_, i) => `09100000${String(i + 1).padStart(2, "0")}`
+);
+
+const productNames = books.map(book => book[0]);
+
+// =============================================
+// HÀM HỖ TRỢ
+// =============================================
+
+function placeholders(values) {
+  return values.map(() => "?").join(", ");
 }
 
-main().catch((e) => { console.error(e); process.exit(1); }).finally(() => prisma.$disconnect());
+async function selectRows(
+  queryInterface,
+  Sequelize,
+  sql,
+  replacements,
+  transaction
+) {
+  return queryInterface.sequelize.query(sql, {
+    replacements,
+    type: Sequelize.QueryTypes.SELECT,
+    transaction
+  });
+}
 
+// =============================================
+// SEED
+// =============================================
+
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    const transaction =
+      await queryInterface.sequelize.transaction();
+
+    try {
+      // -----------------------------------------
+      // 1. TẠO 5 DANH MỤC
+      // -----------------------------------------
+
+      await queryInterface.bulkInsert(
+        "categories",
+        categories,
+        { transaction }
+      );
+
+      console.log("Da tao 5 danh muc.");
+
+      // Lấy ID danh mục
+      const categoryRows = await selectRows(
+        queryInterface,
+        Sequelize,
+        `SELECT category_id, category_name
+         FROM categories
+         WHERE category_name IN (${placeholders(categoryNames)})`,
+        categoryNames,
+        transaction
+      );
+
+      const categoryMap = {};
+
+      categoryRows.forEach(category => {
+        categoryMap[category.category_name] =
+          category.category_id;
+      });
+
+      if (categoryRows.length !== 5) {
+        throw new Error("Khong tim thay du 5 danh muc.");
+      }
+
+      // -----------------------------------------
+      // 2. TẠO 30 SÁCH
+      // -----------------------------------------
+
+      const productData = books.map(book => ({
+        product_name: book[0],
+        category_id: categoryMap[book[1]],
+        description: `Mo ta sach ${book[0]}`,
+        price: book[2],
+        stock: 100,
+        image: null
+      }));
+
+      await queryInterface.bulkInsert(
+        "products",
+        productData,
+        { transaction }
+      );
+
+      console.log("Da tao 30 sach.");
+
+      // Lấy ID sách
+      const productRows = await selectRows(
+        queryInterface,
+        Sequelize,
+        `SELECT product_id, product_name, price
+         FROM products
+         WHERE product_name IN (${placeholders(productNames)})`,
+        productNames,
+        transaction
+      );
+
+      const productMap = {};
+
+      productRows.forEach(product => {
+        productMap[product.product_name] = {
+          product_id: product.product_id,
+          price: Number(product.price)
+        };
+      });
+
+      if (productRows.length !== 30) {
+        throw new Error("Khong tim thay du 30 sach.");
+      }
+
+      // -----------------------------------------
+      // 3. TẠO 1 ADMIN VÀ 10 KHÁCH HÀNG
+      // -----------------------------------------
+
+      const passwordHash = await bcrypt.hash(
+        "123456",
+        10
+      );
+
+      const users = [
+        {
+          name: "Administrator",
+          email: adminEmail,
+          password: passwordHash,
+          phone: "0900000000",
+          role: "admin"
+        }
+      ];
+
+      for (let i = 1; i <= 10; i++) {
+        users.push({
+          name: `Khach hang ${i}`,
+          email: customerEmails[i - 1],
+          password: passwordHash,
+          phone: `09000000${String(i).padStart(2, "0")}`,
+          role: "customer"
+        });
+      }
+
+      await queryInterface.bulkInsert(
+        "Users",
+        users,
+        { transaction }
+      );
+
+      console.log("Da tao 1 Admin va 10 khach hang.");
+
+      // Lấy ID người dùng
+      const allEmails = [adminEmail, ...customerEmails];
+
+      const userRows = await selectRows(
+        queryInterface,
+        Sequelize,
+        `SELECT user_id, email
+         FROM Users
+         WHERE email IN (${placeholders(allEmails)})`,
+        allEmails,
+        transaction
+      );
+
+      const userMap = {};
+
+      userRows.forEach(user => {
+        userMap[user.email] = user.user_id;
+      });
+
+      if (userRows.length !== 11) {
+        throw new Error("Khong tim thay du 11 tai khoan.");
+      }
+
+      // -----------------------------------------
+      // 4. TẠO 10 ĐƠN HÀNG
+      // -----------------------------------------
+
+      const orders = [];
+      const orderDetails = [];
+
+      for (let i = 0; i < 10; i++) {
+        const customerEmail = customerEmails[i];
+
+        // Mỗi khách hàng đặt 2 sách
+        const book1 = books[i * 2];
+        const book2 = books[i * 2 + 1];
+
+        const product1 = productMap[book1[0]];
+        const product2 = productMap[book2[0]];
+
+        const quantity1 = 1;
+        const quantity2 = 2;
+
+        const subtotal1 = product1.price * quantity1;
+        const subtotal2 = product2.price * quantity2;
+
+        const totalAmount = subtotal1 + subtotal2;
+
+        const phone = orderPhones[i];
+
+        orders.push({
+          user_id: userMap[customerEmail],
+          total_amount: totalAmount,
+          shipping_address: `Dia chi giao hang ${i + 1}`,
+          phone: phone,
+          status: orderStatuses[i]
+        });
+
+        orderDetails.push({
+          phone: phone,
+          product_id_1: product1.product_id,
+          product_id_2: product2.product_id,
+          quantity_1: quantity1,
+          quantity_2: quantity2,
+          price_1: product1.price,
+          price_2: product2.price,
+          subtotal_1: subtotal1,
+          subtotal_2: subtotal2
+        });
+      }
+
+      await queryInterface.bulkInsert(
+        "orders",
+        orders,
+        { transaction }
+      );
+
+      console.log("Da tao 10 don hang.");
+
+      // Lấy ID đơn hàng theo số điện thoại riêng
+      const orderRows = await selectRows(
+        queryInterface,
+        Sequelize,
+        `SELECT order_id, phone
+         FROM orders
+         WHERE phone IN (${placeholders(orderPhones)})`,
+        orderPhones,
+        transaction
+      );
+
+      const orderMap = {};
+
+      orderRows.forEach(order => {
+        orderMap[order.phone] = order.order_id;
+      });
+
+      if (orderRows.length !== 10) {
+        throw new Error("Khong tim thay du 10 don hang.");
+      }
+
+      // -----------------------------------------
+      // 5. TẠO 20 CHI TIẾT ĐƠN HÀNG
+      // -----------------------------------------
+
+      const orderItems = [];
+
+      orderDetails.forEach(detail => {
+        const orderId = orderMap[detail.phone];
+
+        orderItems.push(
+          {
+            order_id: orderId,
+            product_id: detail.product_id_1,
+            quantity: detail.quantity_1,
+            price: detail.price_1,
+            subtotal: detail.subtotal_1
+          },
+          {
+            order_id: orderId,
+            product_id: detail.product_id_2,
+            quantity: detail.quantity_2,
+            price: detail.price_2,
+            subtotal: detail.subtotal_2
+          }
+        );
+      });
+
+      await queryInterface.bulkInsert(
+        "order_items",
+        orderItems,
+        { transaction }
+      );
+
+      console.log("Da tao 20 chi tiet don hang.");
+
+      // Hoàn tất transaction
+      await transaction.commit();
+
+      console.log("--------------------------------");
+      console.log("SEED DATA THANH CONG!");
+      console.log("5 danh muc");
+      console.log("30 sach");
+      console.log("1 Admin");
+      console.log("10 khach hang");
+      console.log("10 don hang");
+      console.log("20 chi tiet don hang");
+      console.log("--------------------------------");
+
+    } catch (error) {
+      await transaction.rollback();
+      console.error("SEED DATA THAT BAI:", error);
+      throw error;
+    }
+  },
+
+  // =============================================
+  // HOÀN TÁC SEED
+  // =============================================
+
+  async down(queryInterface, Sequelize) {
+    const transaction =
+      await queryInterface.sequelize.transaction();
+
+    try {
+      // 1. Lấy ID 10 đơn hàng mẫu
+      const orderRows = await selectRows(
+        queryInterface,
+        Sequelize,
+        `SELECT order_id
+         FROM orders
+         WHERE phone IN (${placeholders(orderPhones)})`,
+        orderPhones,
+        transaction
+      );
+
+      const orderIds = orderRows.map(
+        order => order.order_id
+      );
+
+      // 2. Xóa chi tiết đơn hàng
+      if (orderIds.length > 0) {
+        await queryInterface.bulkDelete(
+          "order_items",
+          { order_id: orderIds },
+          { transaction }
+        );
+      }
+
+      // 3. Xóa đơn hàng mẫu
+      await queryInterface.bulkDelete(
+        "orders",
+        { phone: orderPhones },
+        { transaction }
+      );
+
+      // 4. Lấy ID tài khoản mẫu
+      const allEmails = [adminEmail, ...customerEmails];
+
+      const userRows = await selectRows(
+        queryInterface,
+        Sequelize,
+        `SELECT user_id
+         FROM Users
+         WHERE email IN (${placeholders(allEmails)})`,
+        allEmails,
+        transaction
+      );
+
+      const userIds = userRows.map(
+        user => user.user_id
+      );
+
+      // 5. Xóa giỏ hàng của các tài khoản mẫu
+      if (userIds.length > 0) {
+        await queryInterface.bulkDelete(
+          "cart_items",
+          { user_id: userIds },
+          { transaction }
+        );
+      }
+
+      // 6. Xóa tài khoản mẫu
+      await queryInterface.bulkDelete(
+        "Users",
+        { email: allEmails },
+        { transaction }
+      );
+
+      // 7. Xóa sách mẫu
+      await queryInterface.bulkDelete(
+        "products",
+        { product_name: productNames },
+        { transaction }
+      );
+
+      // 8. Xóa danh mục mẫu
+      await queryInterface.bulkDelete(
+        "categories",
+        { category_name: categoryNames },
+        { transaction }
+      );
+
+      await transaction.commit();
+
+      console.log("UNDO SEED THANH CONG!");
+
+    } catch (error) {
+      await transaction.rollback();
+      console.error("UNDO SEED THAT BAI:", error);
+      throw error;
+    }
+  }
+};
 
 
 
