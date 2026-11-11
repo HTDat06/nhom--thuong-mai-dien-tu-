@@ -9,11 +9,16 @@
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^18.0.10",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "msnodesqlv8": "^6.2.2",
+    "sequelize": "^6.37.8",
+    "sequelize-msnodesqlv8": "^0.2.6-beta.8"
   },
   "devDependencies": {
     "nodemon": "^3.1.14",
-    "prisma": "^6.19.3"
+    "prisma": "^6.19.3",
+    "sequelize-cli": "^6.6.5"
   }
 }

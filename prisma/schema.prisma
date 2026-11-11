@@ -6,3 +6,13 @@ datasource db {
   provider = "sqlserver"
   url      = env("DATABASE_URL")
 }
+model User {
+  user_id  Int     @id @default(autoincrement())
+  name     String  @db.NVarChar(225)
+  email    String  @unique @db.NVarChar(225)
+  password String  @db.NVarChar(225)
+  phone    String? @db.NVarChar(225)
+  role     String  @default("customer") @db.NVarChar(50)
+
+  @@map("Users")
+}
