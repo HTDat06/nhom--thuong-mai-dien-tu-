@@ -15,3 +15,18 @@
 - **Cách kiểm chứng:** Đối chiếu ERD với danh sách bảng và yêu cầu nghiệp vụ; kiểm tra PK, FK, quan hệ 1-N, các chỉ mục và ràng buộc; kiểm tra nội dung tài liệu mô tả bảng.
 - **Tỷ lệ mã AI còn giữ lại (ước lượng):** 80% đối với phần DBML được sử dụng và điều chỉnh; chưa tính là mã SQL đã triển khai thực tế.
 - **Điều học được:** Hiểu rõ hơn cách thiết kế khóa chính, khóa ngoại, ràng buộc và chỉ mục. Biết rằng muốn xác nhận đạt 3NF cần kiểm tra phụ thuộc hàm, không thể chỉ dựa vào sơ đồ ERD.
+
+### [AI-03] Xây dựng Migration và Seed
+
+- **Ngày / Người dùng:** 2026-11-11 / Mai Thanh Tân
+- **Công cụ:** ChatGPT (GPT-6)
+- **Giai đoạn:** Phát triển | Database
+- **Task / Commit / PR:** [DB] Migration & Seed
+- **Mục đích:** Tạo Migration và Seed cho website bán linh kiện máy tính bằng Sequelize 6 và SQL Server.
+- **Prompt chính:** "Viết code Migration 6 bảng và Seed dữ liệu mẫu cho website bán linh kiện máy tính."
+- **Kết quả AI trả về:** Code Migration tạo 6 bảng và Seed gồm 5 danh mục, 30 sản phẩm, 1 admin, 10 khách hàng và 10 đơn hàng.
+- **Đánh giá:** Đúng một phần, cần chạy thử và kiểm tra trên SQL Server.
+- **Đã chỉnh sửa gì:** Thay dữ liệu bán sách thành linh kiện máy tính, bổ sung role và thống nhất trường quantity.
+- **Cách kiểm chứng:** Chạy `db:migrate`, `db:seed:all` và kiểm tra dữ liệu trong SSMS.
+- **Tỷ lệ mã AI còn giữ lại (ước lượng):** 60%.
+- **Điều học được:** Biết cách sử dụng Sequelize Migration, Seed, khóa ngoại và transaction.
