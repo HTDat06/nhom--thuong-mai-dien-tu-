@@ -1,21 +1,3 @@
-# AI Log – TV3 – Phạm Thiên Phúc
-
-| Thông tin | Nội dung |
-|---|---|
-| Họ tên, MSSV | Phạm Thiên Phúc – [MSSV] |
-| Nhóm, đề tài | Nhóm 5 – Website thương mại điện tử linh kiện máy tính |
-| Vai trò | TV3 – Frontend Lead |
-| Công cụ AI dùng | ChatGPT (GPT-6) |
-
-## Bảng tổng hợp
-
-| Mã | Ngày | Giai đoạn | Nội dung | Commit / PR |
-|---|---|---|---|---|
-| AI-01 | [Ngày 1] | [Giai đoạn] | [Bổ sung hoạt động thực tế ngày 1] |
-| AI-02 | 10/11/2026 | Thiết kế, lập trình | Hỗ trợ xây dựng layout chung bằng ReactJS | đã xác nhận |
-| AI-03 | 11/11/2026 | Lập trình, kiểm thử | Hỗ trợ xây dựng trang chủ, component ProductCard và kiểm tra responsive | feat(TM-01): trang chu du lieu gia |
-
----
 
 ### [AI-01] Hỗ trợ công việc ngày thứ nhất
 
