@@ -1,66 +1,60 @@
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import "../styles/Register.css";
+import { registerRequest } from "../services/authService";
+import "../styles/register.css";
 
 function Register() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const { login } = useAuth();
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        console.log("Đã bấm nút đăng ký!");
+        setMessage("");
 
         if (password.length < 6) {
-            setMessage("Mật khẩu phải có ít nhất 6 ký tự!");
+            setMessage("Mật khẩu phải có ít nhất 6 ký tự.");
             return;
         }
 
         if (password !== confirmPassword) {
-            setMessage("Mật khẩu xác nhận không khớp!");
+            setMessage("Mật khẩu xác nhận không khớp.");
             return;
         }
 
-        const registeredUsers = JSON.parse(
-            localStorage.getItem("registeredUsers") || "[]"
-        );
-
-        const existingUser = registeredUsers.find(
-            (user) => user.email === email.trim()
-        );
-
-        if (existingUser) {
-            setMessage("Email này đã được đăng ký!");
+        if (phone.trim() && !/^0\d{9}$/.test(phone.trim())) {
+            setMessage("Số điện thoại phải gồm 10 chữ số và bắt đầu bằng 0.");
             return;
         }
 
-        const newUser = {
-            name: name.trim(),
-            email: email.trim(),
-            password: password
-        };
+        setLoading(true);
 
-        registeredUsers.push(newUser);
+        try {
+            const result = await registerRequest({
+                name,
+                email,
+                phone: phone.trim() || null,
+                password
+            });
 
-        localStorage.setItem(
-            "registeredUsers",
-            JSON.stringify(registeredUsers)
-        );
-
-        login({
-            name: newUser.name,
-            email: newUser.email
-        });
-
-        navigate("/");
+            navigate("/login", {
+                replace: true,
+                state: {
+                    message: `${result.message} Vui lòng đăng nhập.`
+                },
+            });
+        } catch (error) {
+            setMessage(error.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -94,6 +88,18 @@ function Register() {
                         />
                     </div>
 
+                    {/* Trường số điện thoại mới */}
+                    <div className="register-form-group">
+                        <label>Số điện thoại</label>
+                        <input
+                            type="tel"
+                            placeholder="Nhập số điện thoại"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            maxLength={10}
+                        />
+                    </div>
+
                     <div className="register-form-group">
                         <label>Mật khẩu</label>
                         <input
@@ -120,8 +126,12 @@ function Register() {
                         <p className="register-message">{message}</p>
                     )}
 
-                    <button type="submit" className="register-button">
-                        Đăng ký
+                    <button
+                        type="submit"
+                        className="register-button"
+                        disabled={loading}
+                    >
+                        {loading ? "Đang đăng ký..." : "Đăng ký"}
                     </button>
                 </form>
 
