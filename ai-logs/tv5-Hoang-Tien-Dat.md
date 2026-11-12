@@ -14,7 +14,7 @@
 | AI-01 | 09/11 | Kiểm thử | Tạo 5 test cases mẫu cho TM-05 Giỏ hàng | PR #32 |
 | AI-02 | 10/11 | Tài liệu | Cập nhật README tách biệt Frontend và Backend | PR #35 |
 | AI-03 | 11/11 | Kiểm thử | Thêm Test Cases TM-04 và Checklist Review PR Bảo mật/Migration | PR #55 |
-
+| AI-04 | 12/11 | Tài liệu | Đồng bộ CSDL Prisma/Seed và rà soát README Mốc 1 | PR #67 |
 
 ---
 
@@ -64,4 +64,18 @@
 - Tỷ lệ nội dung AI còn giữ lại (ước lượng): 75%
 - Điều học được: Khi test API trên PowerShell, cần dùng khối `try-catch` để đọc nội dung lỗi chi tiết trong Response Stream khi HTTP Status khác 200.
 
+---
 
+### [AI-04] Đồng bộ CSDL Prisma/Seed và rà soát README, tài liệu Mốc 1
+- Ngày / Người dùng: 2026-11-12 / Hoàng Tiến Đạt
+- Công cụ: Gemini
+- Giai đoạn: Tài liệu
+- Task / Commit / PR: [DOC] Kiểm tra repo Mốc 1 / `docs: cap nhat readme va tai lieu cau truc thu muc` / PR #67)
+- Mục đích: Xử lý lỗi cài đặt driver SQL Server (`msnodesqlv8`) trên Node.js v24, đồng bộ đủ 6 bảng kèm dữ liệu mẫu qua Prisma (`seed.js`) và rà soát lại `README.md` (hướng dẫn cài đặt, chạy migration/seed, tài khoản demo) phục vụ kiểm tra repo Mốc 1.
+- Prompt chính: "Xử lý lỗi thiếu bảng trên SSMS khi chạy Prisma, tạo script seed dữ liệu mẫu linh kiện máy tính và viết lại README hướng dẫn tải về, chạy migration/seed kèm tài khoản demo."
+- Kết quả AI trả về (tóm tắt): Cung cấp câu lệnh SQL tạo đủ 6 bảng trong database `linh_kien_may_tinh`, tệp `backend/prisma/seed.js` nạp 5 danh mục, 30 sản phẩm, 11 tài khoản mẫu (`admin@gmail.com`, `customer1..10@gmail.com`) cùng 10 đơn hàng, và khung `README.md` chuẩn hóa quy trình cài đặt Backend/Frontend.
+- Đánh giá: Đúng – Giải quyết triệt để xung đột môi trường trên Windows/Node v24 và giúp cả nhóm khởi tạo CSDL chỉ với vài lệnh Prisma.
+- Đã chỉnh sửa gì: Điều chỉnh tên database thành `linh_kien_may_tinh` cho khớp đề tài, bổ sung hướng dẫn xử lý lỗi PowerShell Execution Policy và rà soát đầy đủ các đầu mục của Mốc 1.
+- Cách kiểm chứng: Chạy thực tế toàn bộ quy trình trên máy (`npx prisma db pull`, `node prisma/seed.js`), kiểm tra đủ 6 bảng và bản ghi trong SSMS, đồng thời đăng nhập thử bằng tài khoản demo `admin@gmail.com`.
+- Tỷ lệ nội dung AI còn giữ lại (ước lượng): 75%
+- Điều học được: Khi dự án có sẵn cả migration của Sequelize và schema của Prisma, cần thống nhất một luồng khởi tạo và seed dữ liệu chuẩn trong `README.md` để tránh lỗi môi trường cho các thành viên khác.

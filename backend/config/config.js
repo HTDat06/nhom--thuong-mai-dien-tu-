@@ -8,7 +8,7 @@ module.exports = {
     dialectOptions: {
       options: {
         connectionString:
-          "Driver={ODBC Driver 17 for SQL Server};Server=localhost,1433;Database=ecommerce;Trusted_Connection=Yes;TrustServerCertificate=Yes;",
+          "Driver={ODBC Driver 17 for SQL Server};Server=localhost,1433;Database=linh_kien_may_tinh;Trusted_Connection=Yes;TrustServerCertificate=Yes;",
         trustedConnection: true,
       },
     },
