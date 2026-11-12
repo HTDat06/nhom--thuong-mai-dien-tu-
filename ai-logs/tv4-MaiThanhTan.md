@@ -30,3 +30,18 @@
 - **Cách kiểm chứng:** Chạy `db:migrate`, `db:seed:all` và kiểm tra dữ liệu trong SSMS.
 - **Tỷ lệ mã AI còn giữ lại (ước lượng):** 60%.
 - **Điều học được:** Biết cách sử dụng Sequelize Migration, Seed, khóa ngoại và transaction.
+
+###[AI-04] Kiểm tra lại ERD (đối chiếu Migration với mô tả bảng)
+
+- Ngày / Người dùng: 2026-11-12 / Mai Thanh Tân
+- Công cụ: Claude (Claude Sonnet 5.5)
+- Giai đoạn: Phát triển | Database
+- Task / Commit / PR: [DB] ERD / nhánh docs/erd-final / commit docs: erd final
+- Mục đích: Dùng AI đối chiếu file Migration với bảng mô tả cấu trúc CSDL, sửa chỗ lệch, hoàn thiện mo-ta-bang.md, tạo code DBML để xuất erd-final.png và chuẩn bị bài trình bày ERD 2 phút.
+- Prompt chính: “So sánh migration này với mô tả bảng đã giống nhau chưa”; “Sửa lại file js, thêm những gì còn thiếu”; “Sửa lại bảng mô tả cho khớp với migration”; “Ghi code dbdiagram để làm ERD”; “Sửa allowNull thành NOT NULL cho giống mô tả”; “Sửa lại bảng mô tả theo SQL Server”.
+- Kết quả AI trả về: Bảng liệt kê các điểm lệch giữa Migration và mô tả (order_items thiếu price, subtotal; thiếu 5 CHECK và 3 index; Users có thêm role; mô tả ghi sai quality), đoạn code bổ sung cho Migration, file mo-ta-bang.md đã cập nhật, code DBML cho 6 bảng, 4 truy vấn kiểm tra trên SQL Server và kịch bản trình bày 2 phút.
+- Đánh giá: Đúng phần lớn. Các điểm lệch đều đối chiếu lại được với hai file gốc. Lần đầu AI ghi chú theo MySQL (CHECK chỉ chạy từ MySQL 8.0.16), chỉ sửa sau khi mình nói CSDL là SQL Server. AI không truy cập được CSDL thật nên phải tự kiểm tra bằng SSMS.
+- Đã chỉnh sửa gì: Giữ nguyên code Migration gốc, chỉ thêm cột price, subtotal, các CHECK và index. Đổi 4 cột allowNull: true thành false cho khớp mô tả. Trong mô tả: đổi quality thành quantity, bổ sung role, ghi rõ NOT NULL / DEFAULT / ON DELETE, bỏ ghi chú MySQL, đổi kiểu dữ liệu sang NVARCHAR, NVARCHAR(MAX), IDENTITY(1,1) và thêm mục “Quyết định thiết kế chính”.
+- Cách kiểm chứng: Chạy db:migrate:undo rồi db:migrate, dùng 4 truy vấn trong SSMS để kiểm tra cột, khóa ngoại, CHECK và index, sau đó so sánh với ERD xuất từ dbdiagram.io. Kiểm tra thêm db:seed:all vẫn chạy được sau khi 4 cột chuyển sang NOT NULL.
+- Tỷ lệ mã AI còn giữ lại (ước lượng): 80%.
+- Điều học được: Migration vẫn viết bằng JavaScript, Sequelize tự dịch sang SQL Server theo dialect; allowNull: false chính là NOT NULL; cách đối chiếu Migration với tài liệu thiết kế và với CSDL thật; vì sao tách order_items và lưu giá lúc mua. Khi hỏi AI cần nói rõ môi trường (SQL Server) ngay từ đầu để tránh câu trả lời theo hệ quản trị khác.
