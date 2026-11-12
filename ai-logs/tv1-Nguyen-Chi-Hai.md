@@ -1,6 +1,6 @@
 Với đề tài website thương mại điện tử, nhóm 5 người, 3 tuần, hãy liệt kê chức năng theo mức Must/Could và 3 rủi ro lớn nhất
 
-[AI-02] Hỗ trợ thiết kế Use Case Diagram và đặc tả 3 Use Case
+### [AI-02] Hỗ trợ thiết kế Use Case Diagram và đặc tả 3 Use Case
 Ngày / Người dùng: 2026-11-10 / Nguyễn Chí Hải
 Công cụ: ChatGPT (GPT-6)
 - Giai đoạn: Thiết kế
@@ -15,7 +15,7 @@ Task / Commit / PR: [DOC] Use case / [Commit ID] / [PR #...]
 - Tỷ lệ nội dung AI còn giữ lại (ước lượng): [50]%
 - Điều học được: Cần mô tả rõ vai trò của từng tác nhân và các trường hợp ngoại lệ khi xây dựng Use Case. Không nên sử dụng nguyên bản kết quả AI mà cần đối chiếu với yêu cầu của hệ thống.
 
-[AI-03] Hỗ trợ thiết kế Sequence Diagram đặt hàng và biên bản họp 02
+### [AI-03] Hỗ trợ thiết kế Sequence Diagram đặt hàng và biên bản họp 02
 Ngày / Người dùng: 2026-11-11 / Nguyễn Chí Hải
 Công cụ: ChatGPT (GPT-6)
 - Giai đoạn: Thiết kế, Tài liệu
@@ -29,3 +29,17 @@ Task / Commit / PR: [DOC] Sequence diagram, [DOC] Biên bản họp 02 / [Commit
 - Cách kiểm chứng:Đối chiếu Sequence Diagram với quy trình đặt hàng của hệ thống và kiến trúc Controller – Service – Database. Kiểm tra mã Mermaid trên Mermaid Live Editor. Đối chiếu biên bản họp với tiến độ thực tế và kết quả trao đổi trong cuộc họp nhóm.
 - Tỷ lệ nội dung AI còn giữ lại (ước lượng): [75]%
 - Điều học được: AI có thể hỗ trợ tạo sơ đồ và tài liệu nhanh chóng, những người phát triển cần hiểu rõ luồng nghiệp vụ, kiểm tra Transaction và cập nhật nội dung theo tình hình thực tế của nhóm.
+
+
+### [AI-04] Tổng hợp tài liệu Mốc 1 và lên cấu trúc phân công trình bày
+- Ngày / Người dùng: 2026-11-12 / Nguyễn Chí Hải
+- Công cụ: ChatGPT
+- Giai đoạn: Tài liệu
+- Task / Commit / PR: [DOC] Chuẩn bị Mốc 1 / `docs: tai lieu tom tat moc 1` / [PR #...]
+- Mục đích: Hoàn thiện tệp báo cáo tổng hợp Mốc 1 (`docs/moc-1.md`) bám sát đặc tả đề tài Thương mại điện tử, đồng thời cấu trúc thời lượng trình bày 10 phút cho 5 thành viên trong nhóm.
+- Prompt chính (nguyên văn hoặc link chia sẻ hội thoại): "Gợi ý cấu trúc báo cáo Mốc 1 cho website thương mại điện tử gồm các phần Giới thiệu, Công nghệ (Node.js, Express, React, SQL Server), Kiến trúc, ERD, User Story, Kế hoạch Sprint S2 và gợi ý phân bổ thời gian thuyết trình 10 phút cho 5 thành viên."
+- Kết quả AI trả về (tóm tắt): AI cung cấp khung nội dung chi tiết cho báo cáo tổng hợp và kịch bản phân chia thời lượng trình bày (mỗi thành viên 2 phút).
+- Đánh giá: Đúng và rất sát yêu cầu – giúp trưởng nhóm nhanh chóng hoàn thiện tài liệu nộp và lên lịch điều phối công việc cho nhóm trong ngày.
+- Đã chỉnh sửa gì: Chuẩn hóa lại các bảng Markdown, đồng bộ tên công nghệ thực tế của nhóm (SQL Server, Sequelize, Node.js + Express) và bổ sung mã chức năng (TM-xx) vào kế hoạch Sprint 2.
+- Cách kiểm chứng: Kiểm tra hiển thị Markdown trên GitHub; đối chiếu nội dung báo cáo với hướng dẫn chi tiết Ngày 4 của giảng viên.
+- Tỷ lệ nội dung AI còn giữ lại (ước lượng): 80%
