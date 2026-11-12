@@ -30,3 +30,18 @@
 - **Cách kiểm chứng:** Chạy `db:migrate`, `db:seed:all` và kiểm tra dữ liệu trong SSMS.
 - **Tỷ lệ mã AI còn giữ lại (ước lượng):** 60%.
 - **Điều học được:** Biết cách sử dụng Sequelize Migration, Seed, khóa ngoại và transaction.
+
+[AI-04] Đối chiếu Migration với ERD
+
+- Ngày / Người dùng: 2026-11-12 / Mai Thanh Tân
+- Công cụ: Claude (Claude Sonnet 5.5)
+- Giai đoạn: Phát triển | Database
+- Task / Commit / PR: [DB] ERD / nhánh `docs/erd-final` / commit `docs: erd final`
+- Mục đích: Sử dụng AI để so sánh cấu trúc Migration với ERD, phát hiện những điểm chưa thống nhất và điều chỉnh để tài liệu thiết kế, Migration và CSDL khớp nhau.
+- Prompt chính: “So sánh Migration với ERD đã giống nhau chưa”; “Kiểm tra lại các bảng trong Migration”; “Sửa lại bảng mô tả cho khớp với Migration”; “Ghi code DBML để làm ERD”; “Sửa allowNull thành NOT NULL cho giống mô tả”; “Sửa lại bảng mô tả theo SQL Server”.
+- Kết quả AI trả về: Danh sách các điểm chưa khớp giữa Migration và ERD, hướng dẫn bổ sung cột `price`, `subtotal` cho `order_items`, bổ sung CHECK và INDEX, điều chỉnh `role` trong `Users`, sửa `quality` thành `quantity`, cập nhật mô tả 6 bảng và code DBML để xuất ERD.
+- Đánh giá: Đúng phần lớn. AI giúp phát hiện các điểm chưa thống nhất, tuy nhiên ban đầu có một số hướng dẫn theo MySQL. Sau khi xác nhận sử dụng SQL Server, AI đã điều chỉnh nội dung phù hợp. Các thay đổi cần được kiểm tra lại bằng SSMS.
+- Đã chỉnh sửa gì: Đối chiếu tên bảng, tên cột, kiểu dữ liệu, khóa chính, khóa ngoại và các ràng buộc giữa Migration với ERD. Bổ sung `role`, sửa `quality` thành `quantity`, cập nhật `price`, `subtotal`, CHECK, INDEX và điều chỉnh các cột `allowNull` cho phù hợp với mô tả thiết kế.
+- Cách kiểm chứng: Chạy `db:migrate:undo` rồi `db:migrate`, sử dụng các truy vấn trong SSMS để kiểm tra cấu trúc bảng, khóa ngoại, CHECK và INDEX; sau đó so sánh với ERD xuất từ dbdiagram.io và kiểm tra lại bằng `db:seed:all`.
+- Tỷ lệ mã AI còn giữ lại (ước lượng): 80%.
+- Điều học được: Biết cách đối chiếu Migration với ERD, kiểm tra sự thống nhất giữa thiết kế và CSDL thực tế, hiểu vai trò của PK, FK, CHECK, INDEX và cách Sequelize tạo cấu trúc SQL Server. Khi sử dụng AI cần nêu rõ hệ quản trị CSDL ngay từ đầu để nhận được hướng dẫn chính xác hơn.
