@@ -37,8 +37,8 @@ nhom--thuong-mai-dien-tu-/
 Mở Terminal (hoặc Git Bash) và chạy lệnh sau:
 
 ```bash
-git clone [https://github.com/HTDat06/nhom--thuong-mai-dien-tu-.git](https://github.com/HTDat06/nhom--thuong-mai-dien-tu-.git)
-cd nhom--thuong-mai-dien-tu-
+git clone https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-.git
+cd nhom-5v3s-thuong-mai-dien-tu-
 git checkout develop
 git pull origin develop
 ```
@@ -61,7 +61,8 @@ Mở Terminal tại thư mục gốc dự án và thực hiện lần lượt c�
 cd backend
 
 # Tạo tệp cấu hình môi trường từ tệp mẫu
-Copy-Item .env.example .env
+powershell: Copy-Item .env.example .env
+cmd: copy .env.example .env
 ```
 
 Mở tệp `backend/.env` và kiểm tra dòng `DATABASE_URL` cho khớp với cấu hình SQL Server trên máy bạn:
