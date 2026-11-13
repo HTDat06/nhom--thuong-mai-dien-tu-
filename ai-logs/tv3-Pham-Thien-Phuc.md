@@ -19,7 +19,9 @@
 https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/7
 https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/47
 https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/73
-https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/85
+
+
+
 ---
 
 ### [AI-01] Hỗ trợ thiết kế Wireframe cho website thương mại điện tử
@@ -42,7 +44,7 @@ https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/85
 - Ngày / Người dùng: 2026-11-10 / Phạm Thiên Phúc
 - Công cụ: ChatGPT (GPT-6)
 - Giai đoạn: Thiết kế, Lập trình
-- Task / Commit / PR: [FE] Layout chung / https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/47
+- Task / Commit / PR: [FE] Layout chung /
 - Mục đích: Tham khảo cách xây dựng layout chung cho website thương mại điện tử bằng ReactJS, bao gồm Header, menu danh mục, Footer và khả năng hiển thị trên nhiều kích thước màn hình.
 - Prompt chính (nguyên văn hoặc link chia sẻ hội thoại): "Tôi là Frontend Lead của đồ án thương mại điện tử. Hướng dẫn dựng layout chung gồm header (logo, ô tìm kiếm, giỏ hàng, đăng nhập), menu danh mục, footer và responsive cơ bản bằng ReactJS."
 - Kết quả AI trả về (tóm tắt): AI hướng dẫn chia giao diện thành các component riêng như Header, Navbar, Footer và kết hợp bằng MainLayout để tái sử dụng trên nhiều trang.
@@ -57,7 +59,7 @@ https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/85
 - Ngày / Người dùng: 2026-11-11 / Phạm Thiên Phúc
 - Công cụ: ChatGPT (GPT-6)
 - Giai đoạn: Lập trình, Kiểm thử
-- Task / Commit / PR: [TM-01] Dựng trang chủ tĩnh / `feat(TM-01): trang chu du lieu gia`/https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/73
+- Task / Commit / PR: [TM-01] Dựng trang chủ tĩnh / `feat(TM-01): trang chu du lieu gia`/https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/47
 - Mục đích: Sử dụng AI để tham khảo cách xây dựng trang chủ và tạo component ProductCard có thể tái sử dụng cho các trang danh sách sản phẩm.
 - Prompt chính (nguyên văn hoặc link chia sẻ hội thoại): "Hướng dẫn tạo trang chủ ReactJS cho website thương mại điện tử linh kiện máy tính, tạo component ProductCard hiển thị hình ảnh, tên và giá sản phẩm để có thể tái sử dụng ở các trang khác."
 - Kết quả AI trả về (tóm tắt): AI đề xuất tạo component ProductCard riêng, sử dụng dữ liệu sản phẩm mẫu và render danh sách bằng phương thức map(). Đồng thời hướng dẫn bố trí sản phẩm bằng CSS Grid và thiết kế responsive.
@@ -75,7 +77,7 @@ Công cụ: ChatGPT (GPT-6)
 
 Giai đoạn: Lập trình, Kiểm thử
 
-Task / Commit / PR: [TM-04] Giao diện đăng ký, đăng nhập / feat(TM-04): giao dien dang ky dang nhap/https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/85
+Task / Commit / PR: [TM-04] Giao diện đăng ký, đăng nhập / feat(TM-04): giao dien dang ky dang nhap/https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/73
 
 Mục đích: Sử dụng AI để tham khảo cách xây dựng giao diện đăng ký, đăng nhập theo layout chung của website, hiển thị lỗi kiểm tra dữ liệu trả về từ server và cập nhật Header theo trạng thái đăng nhập của người dùng.
 
