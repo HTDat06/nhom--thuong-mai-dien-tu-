@@ -47,3 +47,19 @@
 - Cách kiểm chứng: Chạy thử trang chủ ReactJS; kiểm tra giao diện ở độ rộng 360px và 1366px; kiểm tra các thẻ sản phẩm hiển thị ảnh, tên và giá.
 - Tỷ lệ nội dung AI còn giữ lại (ước lượng): 40%.
 - Điều học được: CSS Grid kết hợp Media Query giúp xây dựng giao diện responsive; tách ProductCard thành component riêng giúp tái sử dụng giao diện và giảm trùng lặp code.
+- https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/47
+- 
+### [AI-04] Hỗ trợ xây dựng giao diện đăng ký và đăng nhập
+
+- **Ngày / Người dùng:** 12-11-2026 / Phạm Thiên Phúc
+- **Công cụ:** ChatGPT (GPT-6)
+- **Giai đoạn:** Lập trình, Kiểm thử
+- **Task / Commit / PR:** [TM-04] Xây dựng giao diện đăng ký, đăng nhập
+- **Mục đích:** Sử dụng AI để tham khảo cách xây dựng giao diện đăng ký, đăng nhập bằng ReactJS, tổ chức các component riêng biệt và xử lý dữ liệu nhập từ biểu mẫu. Đồng thời đảm bảo giao diện thống nhất với thiết kế chung của website thương mại điện tử linh kiện máy tính.
+- **Prompt chính:** "Tôi đang xây dựng website thương mại điện tử linh kiện máy tính bằng ReactJS. Hãy hướng dẫn tạo giao diện đăng ký và đăng nhập gồm các trường thông tin cần thiết, sử dụng component riêng cho từng trang. Hướng dẫn cách kiểm tra dữ liệu nhập, hiển thị thông báo khi thông tin không hợp lệ và thiết kế CSS sao cho giao diện phù hợp với website."
+- **Kết quả AI trả về:** AI đề xuất xây dựng hai component Login và Register riêng biệt, sử dụng các trường input để nhận thông tin người dùng, kết hợp xử lý sự kiện onChange và onSubmit để kiểm tra dữ liệu. Ngoài ra, AI hướng dẫn sử dụng CSS để định dạng biểu mẫu và hiển thị thông báo khi người dùng nhập thiếu hoặc sai thông tin.
+- **Đánh giá:** Đúng một phần – hướng xây dựng component riêng và xử lý biểu mẫu phù hợp với yêu cầu, tuy nhiên giao diện và một số đoạn code cần điều chỉnh để phù hợp với cấu trúc dự án và thiết kế chung của nhóm.
+- **Đã chỉnh sửa gì:** Điều chỉnh màu sắc, kích thước biểu mẫu, khoảng cách giữa các trường nhập liệu và nút chức năng. Chỉnh sửa bố cục để phù hợp với phong cách website thương mại điện tử linh kiện máy tính.
+- **Cách kiểm chứng:** Chạy thử ứng dụng ReactJS; kiểm tra giao diện đăng ký và đăng nhập; thử nhập thông tin hợp lệ, bỏ trống trường bắt buộc và nhập dữ liệu không hợp lệ để kiểm tra thông báo.
+- **Tỷ lệ nội dung AI còn giữ lại (ước lượng):** 40%.
+- **Điều học được:** Biết cách tổ chức component trong ReactJS, xử lý dữ liệu biểu mẫu thông qua onChange và onSubmit, kiểm tra dữ liệu đầu vào và sử dụng CSS để xây dựng giao diện đăng ký, đăng nhập.
