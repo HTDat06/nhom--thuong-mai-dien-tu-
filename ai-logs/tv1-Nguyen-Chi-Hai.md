@@ -17,7 +17,7 @@ Task / Commit / PR: [DOC] Use case / [Commit ID] / [PR #...]
 
 ### [AI-03] Hỗ trợ thiết kế Sequence Diagram đặt hàng và biên bản họp 02
 Ngày / Người dùng: 2026-11-11 / Nguyễn Chí Hải
-Công cụ: ChatGPT (GPT-6)
+Công cụ: Gemini
 - Giai đoạn: Thiết kế, Tài liệu
 Task / Commit / PR: [DOC] Sequence diagram, [DOC] Biên bản họp 02 / [Commit ID] / [PR #...]
 - Mục đích: Hỗ trợ xây dựng Sequence Diagram mô tả quy trình đặt hàng trên website bán linh kiện máy tính, thể hiện sự tương tác giữa Khách hàng, Giao diện Website, OrderController, OrderService và Cơ sở dữ liệu. Đồng thời hỗ trợ soạn biên bản họp nhóm số 02.
@@ -33,7 +33,7 @@ Task / Commit / PR: [DOC] Sequence diagram, [DOC] Biên bản họp 02 / [Commit
 
 ### [AI-04] Tổng hợp tài liệu Mốc 1 và lên cấu trúc phân công trình bày
 - Ngày / Người dùng: 2026-11-12 / Nguyễn Chí Hải
-- Công cụ: ChatGPT
+- Công cụ: Gemini
 - Giai đoạn: Tài liệu
 - Task / Commit / PR: [DOC] Chuẩn bị Mốc 1 / `docs: tai lieu tom tat moc 1` / [PR #...]
 - Mục đích: Hoàn thiện tệp báo cáo tổng hợp Mốc 1 (`docs/moc-1.md`) bám sát đặc tả đề tài Thương mại điện tử, đồng thời cấu trúc thời lượng trình bày 10 phút cho 5 thành viên trong nhóm.
