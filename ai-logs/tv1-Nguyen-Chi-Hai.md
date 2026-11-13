@@ -1,5 +1,16 @@
-Với đề tài website thương mại điện tử, nhóm 5 người, 3 tuần, hãy liệt kê chức năng theo mức Must/Could và 3 rủi ro lớn nhất
-
+### [AI-01] Brainstorm chức năng Must/Could và rủi ro của đề tài
+- Ngày / Người dùng: 2026-11-09 / Nguyễn Chí Hải
+- Công cụ: Gemini
+- Giai đoạn: Phân tích yêu cầu
+- Task / Commit / PR: [DOC] Đề cương / `docs: de cuong ban dau` / [PR #1]
+- Mục đích: Phân loại danh sách chức năng theo mức độ ưu tiên (Must-have / Could-have) và xác định 3 rủi ro lớn nhất cùng cách phòng tránh cho đồ án website thương mại điện tử trong 3 tuần với 5 thành viên
+- Prompt chính (nguyên văn hoặc link chia sẻ hội thoại): "Với đề tài website thương mại điện tử, nhóm 5 người, 3 tuần, hãy liệt kê chức năng theo mức Must/Could và 3 rủi ro lớn nhất".
+- Kết quả AI trả về (tóm tắt): AI đề xuất bảng phân chia các nhóm chức năng bắt buộc (Xác thực, Sản phẩm, Giỏ hàng, Đặt hàng, Quản trị) và tùy chọn (Đánh giá, Lịch sử đơn, Bộ lọc nâng cao), đồng thời chỉ ra 3 rủi ro chính (Git conflict, Trễ tiến độ, Lỗi CSDL/Transaction).
+- Đánh giá: Đúng và sát thực tế – các nhóm chức năng bám sát đặc tả yêu cầu của giảng viên, các rủi ro phản ánh đúng khó khăn khi làm việc nhóm 5 người.
+- Đã chỉnh sửa gì: Giữ nguyên các nhóm chức năng Must-have khớp với mã chức năng `TM-01` đến `TM-16` của đề tài; bổ sung cụ thể vai trò kiểm duyệt PR của TV5 và quy tắc Trello của nhóm vào phần cách phòng tránh rủi ro.
+- Cách kiểm chứng: Đối chiếu danh sách chức năng bắt buộc trong tài liệu đặc tả 6 đề tài mẫu; thống nhất phạm vi trong buổi họp nhóm Ngày 1 và trình giảng viên duyệt đề cương.
+- Tỷ lệ nội dung AI còn giữ lại (ước lượng): 65%
+- Điều học được: Nêu rõ ràng ràng buộc về thời gian (3 tuần) và nhân sự (5 người) ngay trong prompt giúp AI phân loại mức độ ưu tiên (Must/Could) chuẩn xác và khả thi hơn.
 ### [AI-02] Hỗ trợ thiết kế Use Case Diagram và đặc tả 3 Use Case
 Ngày / Người dùng: 2026-11-10 / Nguyễn Chí Hải
 Công cụ: ChatGPT (GPT-6)
