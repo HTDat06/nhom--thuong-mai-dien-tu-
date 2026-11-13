@@ -1,3 +1,10 @@
+| Mục | Thông tin |
+| --- | --- |
+| Họ tên, MSSV | Nguyễn Chí Hải – 0306241276 |
+| Nhóm, đề tài | Nhóm 8 – Thương mại điện tử (Website bán linh kiện máy tính) |
+| Vai trò | TV1 – LE (Leader / Scrum Master) |
+| Công cụ AI dùng | Gemini / ChatGPT |
+
 ### [AI-01] Brainstorm chức năng Must/Could và rủi ro của đề tài
 - Ngày / Người dùng: 2026-11-09 / Nguyễn Chí Hải
 - Công cụ: Gemini
