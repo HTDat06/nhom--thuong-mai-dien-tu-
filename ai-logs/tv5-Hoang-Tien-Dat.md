@@ -3,7 +3,7 @@
 | Mục | Thông tin |
 | --- | --- |
 | Họ tên, MSSV | Hoàng Tiến Đạt – 0306241272 |
-| Nhóm, đề tài | Nhóm 6 – Thương mại điện tử |
+| Nhóm, đề tài | Nhóm 8 – Thương mại điện tử |
 | Vai trò | TV5 – TE (Tester) |
 | Công cụ AI dùng | Gemini |
 
@@ -14,8 +14,8 @@
 | AI-01 | 09/11 | Kiểm thử | Tạo 5 test cases mẫu cho TM-05 Giỏ hàng | PR #32 |
 | AI-02 | 10/11 | Tài liệu | Cập nhật README tách biệt Frontend và Backend | PR #35 |
 | AI-03 | 11/11 | Kiểm thử | Thêm Test Cases TM-04 và Checklist Review PR Bảo mật/Migration | PR #55 |
-| AI-04 | 12/11 | Tài liệu | Đồng bộ CSDL Prisma/Seed và rà soát README Mốc 1 | PR #67 |
-| AI-05 | 13/11 | Phát hành | Hoàn thiện ERD Mốc 1, phát hành Release v0.1 và tạo nhánh TM-05 | Release v0.1 |
+| AI-04 | 12/11 | Tài liệu | Đồng bộ CSDL Prisma/Seed và rà soát README Mốc 1 | [PR #68 ](https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/68) |
+| AI-05 | 13/11 | Phát hành | Hoàn thiện ERD Mốc 1, phát hành Release v0.1 và tạo nhánh TM-05 | [PR #76 ](https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/76) |
 
 ---
 
@@ -71,7 +71,7 @@
 - Ngày / Người dùng: 2026-11-12 / Hoàng Tiến Đạt
 - Công cụ: Gemini
 - Giai đoạn: Tài liệu
-- Task / Commit / PR: [DOC] Kiểm tra repo Mốc 1 / `docs: cap nhat readme va tai lieu cau truc thu muc` / PR #67
+- Task / Commit / PR: [DOC] Kiểm tra repo Mốc 1 / `docs: cap nhat readme va tai lieu cau truc thu muc` / PR #68
 - Mục đích: Xử lý lỗi cài đặt driver SQL Server (`msnodesqlv8`) trên Node.js v24, đồng bộ đủ 6 bảng kèm dữ liệu mẫu qua Prisma (`seed.js`) và rà soát lại `README.md` (hướng dẫn cài đặt, chạy migration/seed, tài khoản demo) phục vụ kiểm tra repo Mốc 1.
 - Prompt chính: "Xử lý lỗi thiếu bảng trên SSMS khi chạy Prisma, tạo script seed dữ liệu mẫu linh kiện máy tính và viết lại README hướng dẫn tải về, chạy migration/seed kèm tài khoản demo."
 - Kết quả AI trả về (tóm tắt): Cung cấp câu lệnh SQL tạo đủ 6 bảng trong database `linh_kien_may_tinh`, tệp `backend/prisma/seed.js` nạp 5 danh mục, 30 sản phẩm, 11 tài khoản mẫu (`admin@gmail.com`, `customer1..10@gmail.com`) cùng 10 đơn hàng, và khung `README.md` chuẩn hóa quy trình cài đặt Backend/Frontend.
