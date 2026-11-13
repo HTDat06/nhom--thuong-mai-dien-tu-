@@ -1,0 +1,76 @@
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    min-height: 500px;
+}
+
+.register-box {
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.register-box h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.register-subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.register-form-group {
+    margin-bottom: 18px;
+}
+
+.register-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.register-form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.register-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background: #0056b3;
+}
+
+.register-message {
+    color: #d9534f;
+    font-size: 14px;
+}
+
+.register-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-login a {
+    color: #007bff;
+    text-decoration: none;
+}

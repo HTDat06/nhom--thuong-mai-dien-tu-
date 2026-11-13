@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_id    Int          @id @default(autoincrement())
+  name       String       @db.NVarChar(225)
+  email      String       @unique @db.NVarChar(225)
+  password   String       @db.NVarChar(225)
+  phone      String?      @db.NVarChar(225)
+  role       String       @default("customer") @db.NVarChar(50)
+  cart_items cart_items[]
+  orders     orders[]
+
+  @@map("Users")
+}
+
+model cart_items {
+  cart_item_id Int      @id(map: "PK__cart_ite__5D9A6C6E358EAB0B") @default(autoincrement())
+  user_id      Int
+  product_id   Int
+  quantity     Int      @default(1, map: "DF__cart_item__quant__5629CD9C")
+  products     products @relation(fields: [product_id], references: [product_id], map: "FK_cart_items_products")
+  Users        User     @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "FK_cart_items_Users")
+}
+
+model categories {
+  category_id   Int        @id(map: "PK__categori__D54EE9B4C49B131B") @default(autoincrement())
+  category_name String     @db.NVarChar(225)
+  description   String?    @db.NVarChar(Max)
+  products      products[]
+}
+
+model order_items {
+  order_items_id Int      @id(map: "PK__order_it__752915559542E02D") @default(autoincrement())
+  order_id       Int
+  product_id     Int
+  quantity       Int      @default(1, map: "DF__order_ite__quant__5FB337D6")
+  price          Decimal  @db.Decimal(12, 2)
+  subtotal       Decimal  @db.Decimal(12, 2)
+  orders         orders   @relation(fields: [order_id], references: [order_id], onDelete: Cascade, map: "FK_order_items_orders")
+  products       products @relation(fields: [product_id], references: [product_id], map: "FK_order_items_products")
+}
+
+model orders {
+  order_id         Int           @id(map: "PK__orders__465962298F769C5F") @default(autoincrement())
+  user_id          Int
+  total_amount     Decimal       @db.Decimal(12, 2)
+  shipping_address String        @db.NVarChar(225)
+  phone            String        @db.NVarChar(225)
+  status           String        @default("pending", map: "DF__orders__status__5BE2A6F2") @db.NVarChar(225)
+  order_items      order_items[]
+  Users            User          @relation(fields: [user_id], references: [user_id], map: "FK_orders_Users")
+
+  @@index([user_id, status], map: "idx_orders_user_id_status")
+}
+
+model products {
+  product_id   Int           @id(map: "PK__products__47027DF584D1D421") @default(autoincrement())
+  category_id  Int
+  product_name String        @db.NVarChar(225)
+  description  String?       @db.NVarChar(Max)
+  price        Decimal       @db.Decimal(12, 2)
+  stock        Int           @default(0, map: "DF__products__stock__5070F446")
+  image        String?       @db.NVarChar(225)
+  cart_items   cart_items[]
+  order_items  order_items[]
+  categories   categories    @relation(fields: [category_id], references: [category_id], map: "FK_products_categories")
+
+  @@index([category_id], map: "idx_products_category_id")
+  @@index([product_name], map: "idx_products_product_name")
+}
