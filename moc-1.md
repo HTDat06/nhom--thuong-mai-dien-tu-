@@ -35,7 +35,7 @@ Hệ thống hỗ trợ quản trị viên quản lý sản phẩm, khách hàng
 | Backend | Node.js + Express|
 | Frontend | ReactJS |
 | Cơ sở dữ liệu | SQL Server |
-| ORM | Sequelize |
+| ORM | Prisma |
 | Công cụ phát triển | Visual Studio Code |
 | Quản lý mã nguồn | GitHub |
 | Quản lý công việc | Trello |
