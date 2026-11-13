@@ -1,3 +1,26 @@
+# AI log – TV2 – Trần Ngọc Duy
+
+| Mục | Thông tin |
+| --- | --- |
+| Họ tên, MSSV | Trần Ngọc Duy – 0306241268 |
+| Nhóm, đề tài | Nhóm 8 – Thương mại điện tử |
+| Vai trò | TV2 – BE (Lead) |
+| Công cụ AI dùng | ChatGPT |
+
+## Bảng tổng hợp
+
+| Mã | Ngày | Giai đoạn | Nội dung | Commit / PR |
+| --- | --- | --- | --- | --- |
+| AI-01 | 09/11 | Thiết lập môi trường Backend | Cấu hình Prisma kết nối SQL Server | PR |
+| AI-02 | 10/11 | Xây dựng cơ sở dữ liệu | Chạy migration và seeder | PR |
+| AI-03 | 11/11 | Phát triển chức năng Backend | Xây dựng chức năng đăng ký tài khoản Backend | PR |
+| AI-04 | 11/11 | Phân tích và thiết kế hệ thống | Vẽ sơ đồ kiến trúc tổng thể hệ thống | PR |
+| AI-05 | 11/11 | Phát triển Backend | Xây dựng chức năng đăng ký Backend | PR |
+| AI-06 | 12/11 | Phát triển Backend | Xây dựng chức năng đăng nhập và đăng xuất | PR |
+| AI-07 | 12/11 | Phát triển Backend | Phân quyền Admin và điều hướng theo vai trò | PR |
+| AI-08 | 12/11 | Phát triển Backend | Xử lý lỗi CORS khi kết nối Frontend với Backend | PR |
+
+
 ### AI LOG 01 – [AI-01] Cấu hình Prisma kết nối SQL Server
 
 - Ngày / Người dùng: 2026-11-09 / Trần Ngọc Duy
@@ -66,7 +89,7 @@
 
 ---
 
-### AI LOG – [AI-05] Xây dựng chức năng đăng ký Backend
+### AI LOG 05 – [AI-05] Xây dựng chức năng đăng ký Backend
 
 - Ngày / Người dùng: 2026-11-11 / Trần Ngọc Duy
 - Công cụ: ChatGPT – GPT-6
@@ -83,7 +106,7 @@
 
 ---
 
-### AI LOG 05 – [AI-06] Xây dựng chức năng đăng nhập và đăng xuất
+### AI LOG 06 – [AI-06] Xây dựng chức năng đăng nhập và đăng xuất
 
 - Ngày / Người dùng: 2026-11-12 / Trần Ngọc Duy
 - Công cụ: ChatGPT – GPT-6
@@ -100,7 +123,7 @@
 
 ---
 
-### AI LOG 06 – [AI-07] Phân quyền Admin và điều hướng theo vai trò
+### AI LOG 07 – [AI-07] Phân quyền Admin và điều hướng theo vai trò
 
 - Ngày / Người dùng: 2026-11-12 / Trần Ngọc Duy
 - Công cụ: ChatGPT – GPT-6
