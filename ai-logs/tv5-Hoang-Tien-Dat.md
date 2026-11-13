@@ -15,6 +15,7 @@
 | AI-02 | 10/11 | Tài liệu | Cập nhật README tách biệt Frontend và Backend | PR #35 |
 | AI-03 | 11/11 | Kiểm thử | Thêm Test Cases TM-04 và Checklist Review PR Bảo mật/Migration | PR #55 |
 | AI-04 | 12/11 | Tài liệu | Đồng bộ CSDL Prisma/Seed và rà soát README Mốc 1 | PR #67 |
+| AI-05 | 13/11 | Phát hành | Hoàn thiện ERD Mốc 1, phát hành Release v0.1 và tạo nhánh TM-05 | Release v0.1 |
 
 ---
 
@@ -70,7 +71,7 @@
 - Ngày / Người dùng: 2026-11-12 / Hoàng Tiến Đạt
 - Công cụ: Gemini
 - Giai đoạn: Tài liệu
-- Task / Commit / PR: [DOC] Kiểm tra repo Mốc 1 / `docs: cap nhat readme va tai lieu cau truc thu muc` / PR #67)
+- Task / Commit / PR: [DOC] Kiểm tra repo Mốc 1 / `docs: cap nhat readme va tai lieu cau truc thu muc` / PR #67
 - Mục đích: Xử lý lỗi cài đặt driver SQL Server (`msnodesqlv8`) trên Node.js v24, đồng bộ đủ 6 bảng kèm dữ liệu mẫu qua Prisma (`seed.js`) và rà soát lại `README.md` (hướng dẫn cài đặt, chạy migration/seed, tài khoản demo) phục vụ kiểm tra repo Mốc 1.
 - Prompt chính: "Xử lý lỗi thiếu bảng trên SSMS khi chạy Prisma, tạo script seed dữ liệu mẫu linh kiện máy tính và viết lại README hướng dẫn tải về, chạy migration/seed kèm tài khoản demo."
 - Kết quả AI trả về (tóm tắt): Cung cấp câu lệnh SQL tạo đủ 6 bảng trong database `linh_kien_may_tinh`, tệp `backend/prisma/seed.js` nạp 5 danh mục, 30 sản phẩm, 11 tài khoản mẫu (`admin@gmail.com`, `customer1..10@gmail.com`) cùng 10 đơn hàng, và khung `README.md` chuẩn hóa quy trình cài đặt Backend/Frontend.
@@ -79,3 +80,19 @@
 - Cách kiểm chứng: Chạy thực tế toàn bộ quy trình trên máy (`npx prisma db pull`, `node prisma/seed.js`), kiểm tra đủ 6 bảng và bản ghi trong SSMS, đồng thời đăng nhập thử bằng tài khoản demo `admin@gmail.com`.
 - Tỷ lệ nội dung AI còn giữ lại (ước lượng): 75%
 - Điều học được: Khi dự án có sẵn cả migration của Sequelize và schema của Prisma, cần thống nhất một luồng khởi tạo và seed dữ liệu chuẩn trong `README.md` để tránh lỗi môi trường cho các thành viên khác.
+
+---
+
+### [AI-05] Hoàn thiện tài liệu ERD Mốc 1, phát hành Release v0.1 và khởi tạo nhánh TM-05
+- Ngày / Người dùng: 2026-11-13 / Hoàng Tiến Đạt
+- Công cụ: Gemini
+- Giai đoạn: Phát hành
+- Task / Commit / PR: [DOC] Tag v0.1 & [TM-05] / `docs: cap nhat erd-final va phat hanh v0.1` / PR #76
+- Mục đích: Trích xuất các tệp chuẩn (`erd-final.png`, `mo_ta_bang.md`) từ nhánh `docs/erd` sang `develop`, xóa các bản nháp cũ, gộp `develop` vào `main` qua PR để phát hành phiên bản `v0.1` và tạo nhánh `feature/TM-05-gio-hang`.
+- Prompt chính: "Lấy erd-final và mô tả bảng mới nhất từ nhánh docs/erd vào nhánh develop, xóa các bản nháp cũ; hướng dẫn merge develop vào main và tạo release/tag v0.1 trên GitHub."
+- Kết quả AI trả về (tóm tắt): Cung cấp bộ lệnh Git trích xuất chọn lọc tệp từ nhánh `docs/erd` (`git fetch`, `git checkout FETCH_HEAD -- ...`, `git rm`), hướng dẫn cấu hình Git identity cục bộ trên máy phòng thực hành, quy trình tạo PR `develop` -> `main`, xuất bản Release `v0.1` và khởi tạo nhánh `feature/TM-05-gio-hang`.
+- Đánh giá: Đúng – Các lệnh xử lý chính xác tình huống clone nông (`--depth 1`) và quy tắc bảo vệ nhánh `main` trên GitHub.
+- Đã chỉnh sửa gì: Tự cấu hình thông tin người dùng Git cục bộ (`user.name`, `user.email`), kiểm tra lại mã commit trên nhánh `main` trước khi xuất bản Release `v0.1` và cập nhật trạng thái các thẻ trên Trello.
+- Cách kiểm chứng: Kiểm tra thư mục `docs/database/` trên nhánh `develop` chỉ còn đúng 2 tệp chuẩn (`erd-final.png`, `mo_ta_bang.md`), xác nhận trang Release `v0.1` hiển thị công khai trên GitHub và nhánh `feature/TM-05-gio-hang` đã được đẩy lên remote.
+- Tỷ lệ nội dung AI còn giữ lại (ước lượng): 80%
+- Điều học được: Khi clone repository với tham số `--depth 1`, dữ liệu nhánh vừa fetch sẽ nằm ở `FETCH_HEAD` thay vì `origin/<tên-nhánh>`; đồng thời trên máy dùng chung nên cấu hình Git identity cục bộ (không dùng `--global`).
