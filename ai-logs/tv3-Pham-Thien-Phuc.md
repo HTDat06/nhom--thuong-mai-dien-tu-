@@ -1,65 +1,94 @@
+# AI log – TV3 – Phạm Thiên Phúc
 
-### [AI-01] Hỗ trợ thiết kế wireframe giao diện website
+| Mục | Thông tin |
+| Họ tên, MSSV | Phạm Thiên Phúc – 0306241320 |
+| Nhóm, đề tài | Nhóm 8 – Website thương mại điện tử linh kiện máy tính |
+| Vai trò | TV3 – Frontend Lead |
+| Công cụ AI dùng | ChatGPT (GPT-6) |
 
-- Ngày / Người dùng: 9-11-2026 / Phạm Thiên Phúc
-- Công cụ: ChatGPT (GPT-6)
-- Giai đoạn: Thiết kế
-- Task / Commit / PR: Thiết kế wireframe 6 màn hình / Chưa có
-- Mục đích: Tham khảo ý tưởng bố trí giao diện cho website thương mại điện tử, xác định các thành phần cần có trên từng màn hình trước khi tiến hành lập trình.
-- Prompt chính: "Tôi là TV3 – Frontend Lead của đồ án website thương mại điện tử linh kiện máy tính. Hãy gợi ý bố cục và các thành phần cần có trong 6 màn hình giao diện để xây dựng wireframe."
-- Kết quả AI trả về: AI đề xuất cách bố trí các khu vực giao diện, thành phần điều hướng, danh sách sản phẩm, thông tin sản phẩm và các chức năng cần hiển thị trên website.
-- Đánh giá: Đúng một phần – các gợi ý giúp định hình bố cục ban đầu nhưng cần điều chỉnh để phù hợp với yêu cầu và thiết kế của nhóm.
-- Đã chỉnh sửa gì: Sắp xếp lại các thành phần giao diện, điều chỉnh bố cục và nội dung hiển thị theo đề tài cửa hàng linh kiện máy tính.
-- Cách kiểm chứng: Đối chiếu wireframe với yêu cầu đồ án và trao đổi với các thành viên trong nhóm.
-- Tỷ lệ nội dung AI còn giữ lại (ước lượng): 60%.
-- Điều học được: Cần xác định rõ chức năng và bố cục từng màn hình trước khi thiết kế để tránh thiếu thành phần khi lập trình.
+## Bảng tổng hợp
+
+| Mã | Ngày | Giai đoạn | Nội dung | Commit / PR |
+| --- | --- | --- | --- | --- |
+| AI-01 | 09/11/2026 | Thiết kế | Hỗ trợ thiết kế Wireframe cho website thương mại điện tử | wireframe ban phac |
+| AI-02 | 10/11/2026 | Thiết kế, Lập trình | Hỗ trợ xây dựng layout chung cho website bằng ReactJS | feat: layout chung header footer |
+| AI-03 | 11/11/2026 | Lập trình | phát triển trang chủ và component thẻ sản phẩm ProductCard || feat(TM-01): trang chu du lieu gia  |
+| AI-04 | 12/11/2026 | Lập trình | phát triển giao diện đăng ký và đăng nhập | feat(TM-04): giao dien dang ky dang nhap |
+
+
+https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/7
+https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/47
+https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/73
 
 ---
 
-### [AI-02] Hỗ trợ xây dựng layout chung bằng ReactJS
+### [AI-01] Hỗ trợ thiết kế Wireframe cho website thương mại điện tử
 
-- Ngày / Người dùng: 10-11-2026 / Phạm Thiên Phúc
+- Ngày / Người dùng: 2026-11-09 / Phạm Thiên Phúc
+- Công cụ: ChatGPT (GPT-6)
+- Giai đoạn: Thiết kế
+- Task / Commit / PR: [DOC] Thiết kế Wireframe / Chưa xác nhận
+- Mục đích: Sử dụng AI để tham khảo cách bố trí giao diện các trang của website thương mại điện tử linh kiện máy tính, xác định những thành phần cần có trên từng màn hình trước khi triển khai Frontend.
+- Prompt chính (nguyên văn hoặc link chia sẻ hội thoại): "Hướng dẫn thiết kế Wireframe cho website thương mại điện tử chuyên bán linh kiện máy tính. Đề xuất bố cục các màn hình, những thành phần cần có và cách sắp xếp Header, danh mục sản phẩm, nội dung chính và Footer."
+- Kết quả AI trả về (tóm tắt): AI đề xuất bố cục giao diện gồm Header, thanh tìm kiếm, menu danh mục, banner quảng cáo, danh sách sản phẩm, thông tin sản phẩm và Footer. Đồng thời gợi ý cách phân chia các thành phần trên từng màn hình để người dùng dễ thao tác.
+- Đánh giá: Đúng một phần – các gợi ý phù hợp với website thương mại điện tử nhưng cần điều chỉnh để phù hợp với đề tài linh kiện máy tính và yêu cầu của giảng viên.
+- Đã chỉnh sửa gì: Điều chỉnh bố cục theo chủ đề bán linh kiện máy tính, lựa chọn các thành phần cần thiết và tự triển khai Wireframe trên Figma.
+- Cách kiểm chứng: Đối chiếu Wireframe với yêu cầu đồ án, kiểm tra đầy đủ các thành phần giao diện và trao đổi với các thành viên trong nhóm.
+- Tỷ lệ nội dung AI còn giữ lại (ước lượng): 40%.
+- Điều học được: Wireframe giúp xác định bố cục và chức năng của từng màn hình trước khi lập trình, hạn chế việc phải sửa đổi giao diện nhiều lần trong quá trình phát triển.
+
+### [AI-02] Hỗ trợ xây dựng layout chung cho website
+
+- Ngày / Người dùng: 2026-11-10 / Phạm Thiên Phúc
 - Công cụ: ChatGPT (GPT-6)
 - Giai đoạn: Thiết kế, Lập trình
-- Task / Commit / PR: Dựng layout chung
-- Mục đích: Tìm hiểu cách tổ chức cấu trúc thư mục và xây dựng giao diện dùng chung cho website thương mại điện tử bằng ReactJS.
-- Prompt chính: "Tôi là TV3 – Frontend Lead của đồ án thương mại điện tử, sử dụng Node.js và ReactJS. Hãy hướng dẫn xây dựng layout chung gồm Header, thanh danh mục, Footer và responsive cơ bản."
-- Kết quả AI trả về: AI đề xuất chia giao diện thành các component tái sử dụng như Header, Navbar, Footer và MainLayout. Đồng thời hướng dẫn tổ chức thư mục ReactJS và CSS responsive.
-- Đánh giá: Đúng một phần – hướng tổ chức component phù hợp, tuy nhiên cần điều chỉnh theo giao diện và yêu cầu thực tế của nhóm.
-- Đã chỉnh sửa gì: Điều chỉnh cấu trúc component theo dự án; tập trung vào Header, thanh danh mục và Footer, không triển khai chức năng đăng nhập theo phạm vi công việc hiện tại.
-- Cách kiểm chứng: Chạy thử giao diện ReactJS, kiểm tra các component được hiển thị và rà soát cấu trúc giao diện.
+- Task / Commit / PR: [FE] Layout chung / https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/7
+- Mục đích: Tham khảo cách xây dựng layout chung cho website thương mại điện tử bằng ReactJS, bao gồm Header, menu danh mục, Footer và khả năng hiển thị trên nhiều kích thước màn hình.
+- Prompt chính (nguyên văn hoặc link chia sẻ hội thoại): "Tôi là Frontend Lead của đồ án thương mại điện tử. Hướng dẫn dựng layout chung gồm header (logo, ô tìm kiếm, giỏ hàng, đăng nhập), menu danh mục, footer và responsive cơ bản bằng ReactJS."
+- Kết quả AI trả về (tóm tắt): AI hướng dẫn chia giao diện thành các component riêng như Header, Navbar, Footer và kết hợp bằng MainLayout để tái sử dụng trên nhiều trang.
+- Đánh giá: Đúng một phần – cấu trúc component phù hợp với dự án, tuy nhiên cần điều chỉnh theo yêu cầu thực tế của nhóm.
+- Đã chỉnh sửa gì: Điều chỉnh các thành phần giao diện cho phù hợp với website; không triển khai chức năng đăng nhập trong phần công việc này.
+- Cách kiểm chứng: Chạy thử giao diện ReactJS, kiểm tra các thành phần Header, menu danh mục và Footer.
 - Tỷ lệ nội dung AI còn giữ lại (ước lượng): 50%.
 - Điều học được: Nên chia giao diện thành các component nhỏ để dễ tái sử dụng, chỉnh sửa và bảo trì.
 
----
-
 ### [AI-03] Hỗ trợ phát triển trang chủ và component thẻ sản phẩm
 
-- Ngày / Người dùng: 11-11-2026 / Phạm Thiên Phúc
+- Ngày / Người dùng: 2026-11-11 / Phạm Thiên Phúc
 - Công cụ: ChatGPT (GPT-6)
 - Giai đoạn: Lập trình, Kiểm thử
-- Task / Commit / PR: [TM-01] dựng trang chủ tĩnh
-- Mục đích: Sử dụng AI để tham khảo cách xây dựng CSS Grid responsive cho trang chủ website thương mại điện tử, đồng thời tạo component thẻ sản phẩm có thể tái sử dụng cho các chức năng TM-02 và TM-03.
-- Prompt chính: "Tôi đang xây dựng website thương mại điện tử bằng ReactJS. Hãy hướng dẫn tạo bố cục trang chủ gồm khối sản phẩm mới, khối sản phẩm theo danh mục và component ProductCard hiển thị ảnh, tên, giá. Gợi ý cách sử dụng CSS Grid để giao diện hiển thị tốt trên màn hình 360px và 1366px."
-- Kết quả AI trả về: AI đề xuất sử dụng CSS Grid để bố trí danh sách sản phẩm, kết hợp Media Query để thay đổi số cột theo kích thước màn hình. Component ProductCard được tách riêng để hiển thị ảnh, tên và giá sản phẩm.
-- Đánh giá: Đúng một phần – hướng sử dụng CSS Grid và component tái sử dụng phù hợp với yêu cầu, nhưng giao diện cần điều chỉnh thêm để thống nhất với thiết kế của nhóm.
-- Đã chỉnh sửa gì: Điều chỉnh màu sắc, khoảng cách, kích thước hình ảnh và cách hiển thị thẻ sản phẩm theo thiết kế chung của nhóm. Sử dụng dữ liệu giả để hiển thị sản phẩm.
-- Cách kiểm chứng: Chạy thử trang chủ ReactJS; kiểm tra giao diện ở độ rộng 360px và 1366px; kiểm tra các thẻ sản phẩm hiển thị ảnh, tên và giá.
-- Tỷ lệ nội dung AI còn giữ lại (ước lượng): 40%.
-- Điều học được: CSS Grid kết hợp Media Query giúp xây dựng giao diện responsive; tách ProductCard thành component riêng giúp tái sử dụng giao diện và giảm trùng lặp code.
-- https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/47
-- 
-### [AI-04] Hỗ trợ xây dựng giao diện đăng ký và đăng nhập
+- Task / Commit / PR: [TM-01] Dựng trang chủ tĩnh / `feat(TM-01): trang chu du lieu gia`/https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/47
+- Mục đích: Sử dụng AI để tham khảo cách xây dựng trang chủ và tạo component ProductCard có thể tái sử dụng cho các trang danh sách sản phẩm.
+- Prompt chính (nguyên văn hoặc link chia sẻ hội thoại): "Hướng dẫn tạo trang chủ ReactJS cho website thương mại điện tử linh kiện máy tính, tạo component ProductCard hiển thị hình ảnh, tên và giá sản phẩm để có thể tái sử dụng ở các trang khác."
+- Kết quả AI trả về (tóm tắt): AI đề xuất tạo component ProductCard riêng, sử dụng dữ liệu sản phẩm mẫu và render danh sách bằng phương thức map(). Đồng thời hướng dẫn bố trí sản phẩm bằng CSS Grid và thiết kế responsive.
+- Đánh giá: Đúng – cách xây dựng component phù hợp với yêu cầu TM-01 và có thể tái sử dụng trong TM-02, TM-03.
+- Đã chỉnh sửa gì: Điều chỉnh giao diện theo chủ đề linh kiện máy tính và sử dụng dữ liệu mẫu như VGA RTX 4060, RAM Corsair Vengeance DDR5 và CPU AMD Ryzen 5 7600.
+- Cách kiểm chứng: Chạy ứng dụng ReactJS, kiểm tra thông tin sản phẩm hiển thị và khả năng bố trí giao diện ở kích thước màn hình 360px và 1366px.
+- Tỷ lệ nội dung AI còn giữ lại (ước lượng): 50%.
+- Điều học được: Có thể sử dụng component dùng chung để tránh viết lại giao diện thẻ sản phẩm ở nhiều trang và giúp việc bảo trì dễ dàng hơn.
 
-- **Ngày / Người dùng:** 12-11-2026 / Phạm Thiên Phúc
-- **Công cụ:** ChatGPT (GPT-6)
-- **Giai đoạn:** Lập trình, Kiểm thử
-- **Task / Commit / PR:** [TM-04] Xây dựng giao diện đăng ký, đăng nhập
-- **Mục đích:** Sử dụng AI để tham khảo cách xây dựng giao diện đăng ký, đăng nhập bằng ReactJS, tổ chức các component riêng biệt và xử lý dữ liệu nhập từ biểu mẫu. Đồng thời đảm bảo giao diện thống nhất với thiết kế chung của website thương mại điện tử linh kiện máy tính.
-- **Prompt chính:** "Tôi đang xây dựng website thương mại điện tử linh kiện máy tính bằng ReactJS. Hãy hướng dẫn tạo giao diện đăng ký và đăng nhập gồm các trường thông tin cần thiết, sử dụng component riêng cho từng trang. Hướng dẫn cách kiểm tra dữ liệu nhập, hiển thị thông báo khi thông tin không hợp lệ và thiết kế CSS sao cho giao diện phù hợp với website."
-- **Kết quả AI trả về:** AI đề xuất xây dựng hai component Login và Register riêng biệt, sử dụng các trường input để nhận thông tin người dùng, kết hợp xử lý sự kiện onChange và onSubmit để kiểm tra dữ liệu. Ngoài ra, AI hướng dẫn sử dụng CSS để định dạng biểu mẫu và hiển thị thông báo khi người dùng nhập thiếu hoặc sai thông tin.
-- **Đánh giá:** Đúng một phần – hướng xây dựng component riêng và xử lý biểu mẫu phù hợp với yêu cầu, tuy nhiên giao diện và một số đoạn code cần điều chỉnh để phù hợp với cấu trúc dự án và thiết kế chung của nhóm.
-- **Đã chỉnh sửa gì:** Điều chỉnh màu sắc, kích thước biểu mẫu, khoảng cách giữa các trường nhập liệu và nút chức năng. Chỉnh sửa bố cục để phù hợp với phong cách website thương mại điện tử linh kiện máy tính.
-- **Cách kiểm chứng:** Chạy thử ứng dụng ReactJS; kiểm tra giao diện đăng ký và đăng nhập; thử nhập thông tin hợp lệ, bỏ trống trường bắt buộc và nhập dữ liệu không hợp lệ để kiểm tra thông báo.
-- **Tỷ lệ nội dung AI còn giữ lại (ước lượng):** 40%.
-- **Điều học được:** Biết cách tổ chức component trong ReactJS, xử lý dữ liệu biểu mẫu thông qua onChange và onSubmit, kiểm tra dữ liệu đầu vào và sử dụng CSS để xây dựng giao diện đăng ký, đăng nhập.
+[AI-04] Hỗ trợ xây dựng giao diện đăng ký, đăng nhập và hiển thị trạng thái người dùng
+
+Ngày / Người dùng: 2026-11-12 / Phạm Thiên Phúc
+
+Công cụ: ChatGPT (GPT-6)
+
+Giai đoạn: Lập trình, Kiểm thử
+
+Task / Commit / PR: [TM-04] Giao diện đăng ký, đăng nhập / feat(TM-04): giao dien dang ky dang nhap/https://github.com/HTDat06/nhom-5v3s-thuong-mai-dien-tu-/pull/73
+
+Mục đích: Sử dụng AI để tham khảo cách xây dựng giao diện đăng ký, đăng nhập theo layout chung của website, hiển thị lỗi kiểm tra dữ liệu trả về từ server và cập nhật Header theo trạng thái đăng nhập của người dùng.
+
+Prompt chính (nguyên văn hoặc link chia sẻ hội thoại): "Hướng dẫn xây dựng giao diện đăng ký và đăng nhập bằng ReactJS theo layout chung. Khi người dùng đăng nhập thành công, hiển thị tên người dùng và nút đăng xuất trên Header. Khi dữ liệu không hợp lệ, hiển thị lỗi trả về từ server. Kiểm tra thêm các thuộc tính accessibility cơ bản như label và autocomplete cho form."
+
+Kết quả AI trả về (tóm tắt): AI hướng dẫn xây dựng các form đăng ký, đăng nhập, cách hiển thị thông báo lỗi từ server và sử dụng trạng thái đăng nhập để cập nhật nội dung Header. AI cũng gợi ý bổ sung label và autocomplete để giúp biểu mẫu dễ sử dụng hơn.
+
+Đánh giá: Đúng một phần – các hướng dẫn phù hợp với yêu cầu giao diện, tuy nhiên cần điều chỉnh theo cấu trúc component và cơ chế xác thực hiện có của dự án.
+
+Đã chỉnh sửa gì: Xây dựng giao diện đăng ký, đăng nhập theo MainLayout; bổ sung khu vực hiển thị tên người dùng và nút đăng xuất trên Header khi đã đăng nhập; điều chỉnh cách hiển thị thông báo lỗi và bổ sung các thuộc tính accessibility cơ bản cho form.
+
+Cách kiểm chứng: Chạy ứng dụng, kiểm tra giao diện đăng ký và đăng nhập, thử nhập dữ liệu không hợp lệ để kiểm tra thông báo lỗi, kiểm tra Header khi đăng nhập và đăng xuất; chụp ảnh màn hình các trang để phục vụ trình bày.
+
+Tỷ lệ nội dung AI còn giữ lại (ước lượng): 50%.
+
+Điều học được: Cần thiết kế form có thông báo lỗi rõ ràng và các thuộc tính accessibility cơ bản. Header nên thay đổi nội dung theo trạng thái đăng nhập để người dùng dễ nhận biết tài khoản hiện tại.
